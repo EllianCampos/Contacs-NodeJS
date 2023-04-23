@@ -16,7 +16,7 @@ const getData = () =>{
         container_contacts.removeChild(container_contacts.firstChild)
     }
 
-    fetch('http://localhost:1000/contacts')
+    fetch('http://192.168.0.12:1000/contacts')
     .then(res=>res.ok ? Promise.resolve(res) : Promise.reject(res))
     .then(res=>res.json())
     .then(res=>{
@@ -69,7 +69,7 @@ const getData = () =>{
         for (const button of button_delete){
             button.addEventListener('click', () => {
                 // alert(button.id)
-                fetch('http://localhost:1000/contacts/'+button.id,{
+                fetch('http://192.168.0.12:1000/contacts/'+button.id,{
                     method:'DELETE'
                 })
                 .then(res=>{
@@ -100,7 +100,7 @@ form_add.addEventListener('submit', (e) => {
         "phone": form_add_phone.value
     }
 
-    fetch('http://localhost:1000/contacts',{
+    fetch('http://192.168.0.12:1000/contacts',{
         method:'POST',
         body:JSON.stringify(newContact),
         headers:{
@@ -119,7 +119,7 @@ form_add.addEventListener('submit', (e) => {
 form_update.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:1000/contacts/'+form_update.name,{
+    fetch('http://192.168.0.12:1000/contacts/'+form_update.name,{
         method:'PUT',
         body:JSON.stringify({
             "name": form_update_name.value,
