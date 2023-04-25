@@ -6,7 +6,7 @@ export const getAllContacts = async (req, res) => {
         const pool = await getConnection()
         const result = await pool.request().query('SELECT * FROM Contacts')
         res.json(result.recordset)
-    }catch{
+    }catch (error){
         res.send(error.message)
     }
 }

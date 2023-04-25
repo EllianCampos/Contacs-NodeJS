@@ -1,10 +1,10 @@
 const sql = require('mssql')
 
 const dbSettings = {
-    user: 'elliandev',
-    password: 'egcc',
-    server: 'localhost',
-    database: 'webdb',
+    user: 'ellian_SQLLogin_1',
+    password: 'jbfq121ads',
+    server: 'ellianSqlServerDB2.mssql.somee.com',
+    database: 'ellianSqlServerDB2',
     options: {
         encrypt: true, // for azure
         trustServerCertificate: true // change to true for local dev / self-signed certs
