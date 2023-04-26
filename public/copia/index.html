@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Contacts</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Contacts Book</h1>
+        <button class="button-add" id="button_add">Add contact</button>
+    </header>
+
+    <div class="container-contacts" id="container_contacts"></div>
+
+    <div class="customWindow hide" id="customWindow_add">
+        <form class="form" id="form_add">
+
+            <label for="form_add_name" class="form__label">Contact name</label>
+            <input type="text" name="" class="form__input" id="form_add_name">
+
+            <label for="form_add_phone" class="form__label">Phone number</label>
+            <input type="text" name="" class="form__input" id="form_add_phone">
+
+            <input type="submit" class="form__input--submit" value="Add contact">
+        </form>
+    </div>
+
+    <div class="customWindow hide" id="customWindow_update">
+        <form class="form" id="form_update">
+
+            <label for="form_add_name" class="form__label">Contact name</label>
+            <input type="text" name="" class="form__input" id="form_update_name">
+
+            <label for="form_add_phone" class="form__label">Phone number</label>
+            <input type="text" name="" class="form__input" id="form_update_phone">
+
+            <input type="submit" class="form__input--submit" value="Update contact">
+        </form>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

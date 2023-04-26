@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">    
+    <title>Contacts Book</title>
+</head>
+<body>     
+    <!-- Ventana seleccionar cuenta -->
+    <div class="customWindow hide" id="customWindow_searchAccount">
+        <img src="assets/icons/cancel.svg" alt="button salir" class="btnSalir">
+        <div class="customWindow_users" id="customWindow_users"></div>
+    </div>
+
+    <!-- Ventana PRINCIPAL -->
+    <div class="container">
+        <div class="container__head">
+            <h1 class="container__head--title">Contacts Book</h1>
+            <p class="container__head--show">Programado por <span>Ellian Campos</span></p>
+        </div>
+
+        <form class="container__form" id="form_login">
+            <div class="form__field">
+                <img src="assets/icons/User.svg" alt="User icon" class="form__field--icon">
+                <input type="text" class="form__field--input" placeholder="Usuario" id="form_login_account">
+                <img src="assets/icons/search.svg" alt="Icon search" class="form_login_showUsers">
+                <input type="button" id="form_login_button_register" value="Registrarme">
+            </div>
+            <div class="form__field">
+                <img src="assets/icons/Password.svg" alt="blocked icon" class="form__field--icon">
+                <input type="password" placeholder="Contraseña" class="form__field--input" id="form_login_password">
+                <img src="assets/icons/VisibilityON.svg" alt="see password" class="form__field--icon" id="form_login_seePassword">
+                <input type="button" id="form_login_button_recoverPassword" value="Olvidé la Contraseña">
+            </div>
+
+            <input type="submit" value="Ingresar" class="form__button">            
+        </form>
+    </div>
+
+    <script src="js/index.js"></script> 
+</body>
+</html>

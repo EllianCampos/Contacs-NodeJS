@@ -1,10 +1,11 @@
 const sql = require('mssql')
+import config from "../config"
 
 const dbSettings = {
-    user: 'ellian_SQLLogin_1',
-    password: 'jbfq121ads',
-    server: 'ellianSqlServerDB2.mssql.somee.com',
-    database: 'ellianSqlServerDB2',
+    user: config.dbUser,
+    password: config.dbPassword,
+    server: config.dbServer,
+    database: config.dbName,
     options: {
         encrypt: true, // for azure
         trustServerCertificate: true // change to true for local dev / self-signed certs

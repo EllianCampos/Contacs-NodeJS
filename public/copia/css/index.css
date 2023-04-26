@@ -1,0 +1,408 @@
+:root{
+    --Main_app_color: #0066CC;
+    --header-text_color: #f5f5f5;
+    --aside-bg_color: silver;
+}
+
+*{
+    box-sizing: border-box;
+} 
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-flow: wrap row;
+    min-height: 85vh;
+    overflow: hidden;
+}
+
+.container{
+    width: 100%;
+}
+
+.container__head{
+    border: 5px solid var(--Main_app_color) ;
+    border-radius: 15px;
+    margin: 10vh 10vw;
+    padding: 15px;
+    width: 80%;
+    text-align: center;
+}
+
+.container__head--title{
+    color: green;
+}
+
+.container__head--show span{
+    font-weight: 1000;
+}
+
+.container__head--button{
+    background: none;
+    border: none;
+    color: purple;
+}
+
+.container__form{
+    width: 300px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 10px;
+    box-sizing: content-box;
+    box-shadow: 0 0 5px rgb(0 0 0 / .3);
+    border-radius: 15px;
+}
+
+.customWindow{
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form__field{
+    background-color: white;
+    width: 300px;
+    /* width: 400px; */
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 15px;
+    text-align: left;
+    margin-bottom: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: 0 0 5px rgb(0 0 0 / .3);
+
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.form__field img{
+    height: 30px;
+    margin-top: 5px;
+}
+
+.form__field input[type="text"],
+.form__field input[type="password"],
+.form__field select{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--Main_app_color);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+#form_login input[type="text"],
+#form_login input[type="password"]{
+    width: 70%;
+}
+
+.form__field button{
+    width: 230px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;   
+    box-shadow: 0 0 5px rgb(0 0 0 / .3); 
+    font-size: 1.1em;
+} 
+
+.form__field input[type="button"],
+input[type="submit"]{
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;   
+    box-shadow: 0 0 5px rgb(0 0 0 / .3); 
+    font-size: 1.1em;
+    margin-left: auto;
+} 
+
+input[type="submit"]{
+    color: var(--Main_app_color);
+    padding: 10px;
+}
+
+.btnSalir{
+    position: absolute;
+    top: 5px;
+    margin-top: 5px;
+    z-index: 30;
+
+    background-color: rgb(0, 255, 255);
+    border-radius: 50%;
+    filter: invert(1);
+}
+
+.customWindow__table{
+    width: 200px;
+}
+
+.customWindow__table thead th{
+    padding-bottom: 15px;
+}
+
+.customWindow__table tbody td{
+    border-top: 2px solid var(--Main_app_color);
+}
+
+.customWindow__table td{
+    padding: 20px;
+}
+
+.customWindow__table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.customWindow__table tr:hover {
+    background-color: #ddd;
+}
+
+.hide{
+    display: none;
+}
+
+
+.customWindow_users{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.customWindow_users_user{
+    border: 3px solid #222;
+    border-radius: 10px;
+    width: 200px;
+    padding: 15px;
+    margin: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.customWindow__form label,
+.customWindow__form input,
+.customWindow__form recover-password {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.password_component{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+/* .form__field{
+    background-color: white;
+    width: 230px;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 15px;
+    text-align: left;
+    margin-bottom: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: 0 0 5px rgb(0 0 0 / .3);
+
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.form__field--input,
+.form__button{
+    font-size: 1.1em;
+}
+
+.form__field--icon{
+    height: 20px;
+    margin-top: 5px;
+}
+
+.form__field--input{
+    width: 70%;
+    border: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.form__fiel--link{
+    background-color: transparent;
+    color: var(--Main_app_color);
+    font-size: .9em;
+    text-decoration: none;
+    border: none;
+    position: absolute;
+    bottom: 5px; right: 5px;
+}
+
+.form__button{
+    width: 230px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;   
+    box-shadow: 0 0 5px rgb(0 0 0 / .3); 
+}  */
+
+/* .customWindow__form input,
+.customWindow__form label,
+.customWindow__form select{ */
+    /* width: 230px; */
+    /* height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: white;   
+    box-shadow: 0 0 5px rgb(0 0 0 / .3); 
+    padding: 10px 50px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.customWindow__form label{
+    color: var(--Main_app_color);
+    
+} */
