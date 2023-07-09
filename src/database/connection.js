@@ -6,10 +6,7 @@ const dbSettings = {
     password: config.dbPassword,
     server: config.dbServer,
     database: config.dbName,
-    options: {
-        encrypt: true, // for azure
-        trustServerCertificate: true // change to true for local dev / self-signed certs
-      }
+    options: {encrypt: true, trustServerCertificate: true}
 }
 
 export async function getConnection(){

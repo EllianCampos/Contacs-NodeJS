@@ -3,7 +3,7 @@ import pug from 'gulp-pug'
 
 gulp.task('views', () => {
     return gulp.src('./src/views/pages/*.pug')
-    .pipe(pug())
+    .pipe(pug({pretty: true}))
     .pipe(gulp.dest('./public'))
 })
 

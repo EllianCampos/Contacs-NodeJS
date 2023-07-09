@@ -3,11 +3,22 @@ import {encryptPassword, comparePassword} from '../lib/password'
 import { getConnection, sql } from '../database/connection'
 import jwt from 'jsonwebtoken'
 
+// export const getAllUsers = async (req, res) =>{
+//     try{
+//         const pool = await getConnection()
+//         const result = await pool.request().query('SELECT * FROM UsersContactsDB')
+//         res.json(result.recordset)
+//     }catch (error){
+//         res.send(error.message)
+//     }
+// }
+
 export const getAllUsers = async (req, res) =>{
     try{
         const pool = await getConnection()
-        const result = await pool.request().query('SELECT * FROM UsersContactsDB')
-        res.json(result.recordset)
+        const result = await pool.request().query('SELECT * FROM Users')
+        // console.log(result.recordset)
+        res.render('index',{allUsers: result.recordset})
     }catch (error){
         res.send(error.message)
     }
@@ -28,7 +39,7 @@ export const singUp = async (req, res) => {
         const result = await pool.request()
         .input('namex', sql.VarChar, username)
         .input('passwordx', sql.Text, encryptedPassword)
-        .query('INSERT INTO UsersContactsDB VALUES (@namex, @passwordx); SELECT SCOPE_IDENTITY() AS id')
+        .query('INSERT INTO Users VALUES (@namex, @passwordx); SELECT SCOPE_IDENTITY() AS id')
 
         // const id_contact = result.recordset[0].id
 
@@ -50,7 +61,7 @@ export const singIn = async (req, res) => {
     
     const result = await pool.request()
     .input('idx', id)
-    .query('SELECT * FROM UsersContactsDB WHERE id_user = @idx')
+    .query('SELECT * FROM Users WHERE id_user = @idx')
 
     // Validar usuario
     if (result.rowsAffected == 0) {
@@ -65,6 +76,8 @@ export const singIn = async (req, res) => {
     
     // General token
     const token = jwt.sign({id}, config.SECRET,{expiresIn:config.TOKENSEXPIRTATIONSECONS})
-
-    res.json({token})
+    // console.log(token)
+    res.clearCookie('token')
+    res.cookie('token', token, { httpOnly: true });
+    res.json({ok: true})
 }

@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="css/index.css")
+        title Contacts Book
+    body 
+        //- Ventana seleccionar cuenta
+        div.customWindow.hide#customWindow_searchAccount
+            img(src="assets/icons/cancel.svg", alt="button salir").btnSalir
+            div.customWindow_users#customWindow_users
+                -const users = allUsers
+                    each user in users
+                        div(data-id= user.id_user).user
+                            p= user.name_user
+        
+        //- Ventana crear cuenta
+        div.customWindow.hide#customWindow_createAccount
+            img(src="assets/icons/cancel.svg", alt="button salir").btnSalir
+            form.customWindow__form#form_createAccount
+                div.form__field
+                    img(src="assets/icons/User.svg", alt="User icon").form__field--icon
+                    input#form_create_account(type="text" placeholder="Usuario").form__field--input
+                div.form__field
+                    img(src="assets/icons/Password.svg", alt="Blocked icon").form__field--icon
+                    input#form_create_password(type="password" placeholder="Contraseña").form__field--input
+                    img#form_create_seePassword(src="assets/icons/VisibilityON.svg", alt="See password").form__field--icon
+                input(type="submit", value="Registrarme").form__button
+
+        //- Ventana principal
+        div.container
+            div.container__head
+                h1.cocontainer__head--title Contacts Book
+                p.container__head--show Programado por
+                    span Ellian Campos
+            form.container__form#form_login
+                div.form__field
+                    img(src="assets/icons/User.svg", alt="User icon").form__field--icon
+                    input#form_login_account(type="text", name="", placeholder="Usuario", readonly="readonly").form__field--input
+                    img#form_login_select_account(src="assets/icons/search.svg", alt="Icon search").form_login_showUsers
+                    input#form_login_button_register(type="button", value="Registrarme")
+                div.form__field
+                    img(src="assets/icons/Password.svg", alt="Blocked icon").form__field--icon
+                    input#form_login_password(type="password", name="", placeholder="Contraseña").form__field--input
+                    img#form_login_seePassword(src="assets/icons/VisibilityON.svg", alt="See password").form__field--icon
+                input(type="submit", value="Ingresar").form__button
+    script(src="js/index.js") 

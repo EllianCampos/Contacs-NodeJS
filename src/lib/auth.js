@@ -4,7 +4,7 @@ import { getConnection, sql } from '../database/connection'
 
 export const verifyToken = async (req, res, next) => {
     try {
-        const token = req.headers["x-access-token"]
+        const token = req.headers["x-access-token"] || req.params.token || req.cookies.token
 
         // Validar que venga un token
         if (!token) return res.status(403).json({message:"No token provided"})
@@ -18,7 +18,7 @@ export const verifyToken = async (req, res, next) => {
     
         const result = await pool.request()
         .input('idx', req.userId)
-        .query('SELECT * FROM UsersContactsDB WHERE id_user = @idx')
+        .query('SELECT * FROM Users WHERE id_user = @idx')
     
         // Validar si el usuario existe
         if (result.rowsAffected == 0) {

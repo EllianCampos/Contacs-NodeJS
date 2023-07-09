@@ -1,12 +1,24 @@
 // import { Int } from 'mssql'
 import { getConnection, sql } from '../database/connection'
 
+export const home = async (req, res) => {
+    try{
+        const pool = await getConnection()
+        const result = await pool.request()
+        .input('idx', sql.Int, req.userId)
+        .query('SELECT * FROM Contacts where id_user = @idx')
+        res.render('main',{contactsOfTheUser:result.recordset})
+    }catch (error){
+        res.send(error.message)
+    }
+}
+
 export const getAllContacts = async (req, res) => {
     try{
         const pool = await getConnection()
         const result = await pool.request()
         .input('idx', sql.Int, req.userId)
-        .query('SELECT * FROM ContactsContactsDB where id_user = @idx')
+        .query('SELECT * FROM Contacts where id_user = @idx')
         res.json(result.recordset)
     }catch (error){
         res.send(error.message)
@@ -27,9 +39,10 @@ export const createContact = async (req, res) => {
         .input('namex', sql.VarChar, name)
         .input('phonex', sql.Text, phone)
         .input('idx', sql.Int, req.userId)
-        .query('INSERT INTO ContactsContactsDB (name_contact, phone_contact, id_user) VALUES (@namex, @phonex, @idx)')
+        .query('INSERT INTO Contacts (name_contact, phone_contact, id_user) VALUES (@namex, @phonex, @idx)')
 
-        res.json({name, phone})
+        // res.json({name, phone})
+        res.redirect('/home')
     } catch (error) {
         res.status(500)
         res.send(error.message)
@@ -44,7 +57,7 @@ export const getContactById = async (req, res) => {
     const result = await pool.request()
     .input('id_contactx', sql.Int, id_contact)
     .input('id_userx', sql.Int, req.userId)
-    .query('SELECT * FROM ContactsContactsDB WHERE id_contact = @id_contactx AND id_user = @id_userx')
+    .query('SELECT * FROM Contacts WHERE id_contact = @id_contactx AND id_user = @id_userx')
     
     res.send(result.recordset)
 }
@@ -57,9 +70,8 @@ export const deleteContactById = async (req, res) => {
     const result = await pool.request()
     .input('id_contactx', sql.Int, id_contact)
     .input('id_userx', sql.Int, req.userId)
-    .query('DELETE FROM ContactsContactsDB WHERE id_contact = @id_contactx AND id_user = @id_userx')
-
-    res.sendStatus(204)
+    .query('DELETE FROM Contacts WHERE id_contact = @id_contactx AND id_user = @id_userx')
+    res.json({ok: true})
 }
 
 export const getCountOfContacts = async (req, res) => {
@@ -67,7 +79,7 @@ export const getCountOfContacts = async (req, res) => {
     
     const result = await pool.request()
     .input('id_userx', sql.Int, req.userId)
-    .query('SELECT COUNT(*) FROM ContactsContactsDB WHERE id_user = @id_userx')
+    .query('SELECT COUNT(*) FROM Contacts WHERE id_user = @id_userx')
 
     res.json(result.recordset[0][''])
 }
@@ -87,7 +99,8 @@ export const updateContactById = async (req, res) => {
         .input('phonex', sql.VarChar, phone)
         .input('id_contactx', sql.Int, id_contact)
         .input('id_userx', sql.Int, req.userId)
-        .query('UPDATE ContactsContactsDB SET name_contact = @namex, phone_contact = @phonex WHERE id_contact = @id_contactx AND id_user = @id_userx')
-
-    res.json({name, phone})
+        .query('UPDATE Contacts SET name_contact = @namex, phone_contact = @phonex WHERE id_contact = @id_contactx AND id_user = @id_userx')
+    res.json({ok: true})
+    // res.redirect('/home')
+    // res.json({name, phone})
 }

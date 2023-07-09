@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="../../css/main.css")
+        title Contacts Book
+    body 
+        header.header 
+            h1.header__title Contacts Book
+            button.button-add#button_add Add contact
+            a(href="/").button-add Salir 
+
+        div.container-contacts#container_contacts
+            -const contacts = contactsOfTheUser
+                    each contact in contacts
+                        div(data-id= contact.id_user, data-contact= contact.id_contact).contact
+                            h2= contact.name_contact
+                            p= contact.phone_contact
+                            button.button_update Edit 
+                            button.button_delete Delete
+
+        div#customWindow_add.customWindow.hide
+            form(action="/home/contacts" method="POST")#form_add.form
+                label.form__label(for="form_add_name") Contact name
+                input#form_add_name.form__input(type="text" name="name")
+
+                label.form__label(for="form_add_phone") Phone number
+                input#form_add_phone.form__input(type="text" name="phone")
+
+                input(type="submit", value="Add contact")
+
+        div#customWindow_update.customWindow.hide
+            form#form_update.form
+                label.form__label(for="form_update_name") Contact name
+                input#form_update_name.form__input(type="text")
+
+                label.form__label(for="form_update_phone") Phone number
+                input#form_update_phone.form__input(type="text")
+
+                input(type="submit", value="Update contact")
+        script(src="../../js/main.js") 
+
+        
